@@ -9,12 +9,15 @@ import Paper from '@mui/material/Paper';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Button, Checkbox, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import getAllSong from './api';
 import deleteSongApi from './deleteApi';
 import editSong from './editApi';
 import addSong from './addSongApi';
-
 
 function Homepage() {
 
@@ -215,13 +218,21 @@ function Homepage() {
                     <TextField id="standard-basic" label="Song Name" variant="standard" value={songToAdd.songName} id="songName" name="songName" onChange={handleAddChange}/>
                     <TextField id="standard-basic" label="Artist Name" variant="standard" value={songToAdd.artistName} id="artistName" name="artistName" onChange={handleAddChange}/>
                     <TextField id="standard-basic" label="URL" variant="standard" value={songToAdd.url} id="url" name="url" onChange={handleAddChange}/>
-                    <TextField
+                    {/* <TextField
                         id="standard-number"
                         label="Rating"
                         type="number"
                         value={songToAdd.rating} id="rating" name="rating" onChange={handleAddChange}
-                    />
-                    <Checkbox id='favourite' checked={songToAdd.favourite} name='favourite' label='Favourite' onChange={handleAddFavouriteChange}/>
+                    /> */}
+
+
+      <Typography component="legend">Rating</Typography>
+      <Rating
+        name="rating"
+        value={songToAdd.rating}
+        onChange={handleAddChange}
+      />
+                    <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id='favourite' checked={songToAdd.favourite} name='favourite' label='Favourite' onChange={handleAddFavouriteChange} />
                     {/* <TextField id="standard-basic" label="Favourite" variant="standard" value={songToAdd.songName} id="songName" name="songName" onChange={handleAddChange}/> */}
                 </div>
                 <Button variant="outlined" onClick={onSubmitAddAndClose}>Submit</Button>
@@ -235,7 +246,7 @@ function Homepage() {
                 <Button variant="outlined" onClick={onSubmitEditSaveAndClose}>Submit</Button>
             </Dialog>
         </div>
-    );
+    )
 }
 
 export default Homepage;
