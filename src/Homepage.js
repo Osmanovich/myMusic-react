@@ -43,7 +43,7 @@ function Homepage() {
         dateEntered: '',
         dateLastEdited: ''
     });
-    const [songToAdd, setSongToAdd]=useState({
+    const [songToAdd, setSongToAdd] = useState({
         artistName: '',
         songName: '',
         url: '',
@@ -101,20 +101,20 @@ function Homepage() {
         setEditModalOpen(true);
     }
 
-    const handleEditChange = (event) =>{
-        setEditSongDisp({...songEditDisp, [event.target.id]:event.target.value});
+    const handleEditChange = (event) => {
+        setEditSongDisp({ ...songEditDisp, [event.target.id]: event.target.value });
     }
 
-    const handleAddChange = (event) =>{
-        setSongToAdd({...songToAdd, [event.target.name]:event.target.value});
+    const handleAddChange = (event) => {
+        setSongToAdd({ ...songToAdd, [event.target.name]: event.target.value });
     }
 
-    const handleAddFavouriteChange = (event) =>{
-        setSongToAdd({...songToAdd, [event.target.name]:event.target.checked})
+    const handleAddFavouriteChange = (event) => {
+        setSongToAdd({ ...songToAdd, [event.target.name]: event.target.checked })
     }
 
-    const onSubmitEditSaveAndClose = () =>{
-        editSong(songEditDisp).then((res)=>{
+    const onSubmitEditSaveAndClose = () => {
+        editSong(songEditDisp).then((res) => {
             setEditSongDisp({
                 artistName: '',
                 songName: '',
@@ -129,8 +129,8 @@ function Homepage() {
         })
     }
 
-    const onSubmitAddAndClose = () =>{
-        addSong(songToAdd).then((res)=>{
+    const onSubmitAddAndClose = () => {
+        addSong(songToAdd).then((res) => {
             setSongToAdd({
                 artistName: '',
                 songName: '',
@@ -215,33 +215,25 @@ function Homepage() {
             </Dialog>
             <Dialog open={isAddModalOpen} onClose={handleAddModalClose}>
                 <div>
-                    <TextField id="standard-basic" label="Song Name" variant="standard" value={songToAdd.songName} id="songName" name="songName" onChange={handleAddChange}/>
-                    <TextField id="standard-basic" label="Artist Name" variant="standard" value={songToAdd.artistName} id="artistName" name="artistName" onChange={handleAddChange}/>
-                    <TextField id="standard-basic" label="URL" variant="standard" value={songToAdd.url} id="url" name="url" onChange={handleAddChange}/>
-                    {/* <TextField
-                        id="standard-number"
-                        label="Rating"
-                        type="number"
-                        value={songToAdd.rating} id="rating" name="rating" onChange={handleAddChange}
-                    /> */}
+                    <TextField id="standard-basic" label="Song Name" variant="standard" value={songToAdd.songName} id="songName" name="songName" onChange={handleAddChange} />
+                    <TextField id="standard-basic" label="Artist Name" variant="standard" value={songToAdd.artistName} id="artistName" name="artistName" onChange={handleAddChange} />
+                    <TextField id="standard-basic" label="URL" variant="standard" value={songToAdd.url} id="url" name="url" onChange={handleAddChange} />
 
-
-      <Typography component="legend">Rating</Typography>
-      <Rating
-        name="rating"
-        value={songToAdd.rating}
-        onChange={handleAddChange}
-      />
+                    <Typography component="legend">Rating</Typography>
+                    <Rating
+                        name="rating"
+                        value={songToAdd.rating}
+                        onChange={handleAddChange}
+                    />
                     <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id='favourite' checked={songToAdd.favourite} name='favourite' label='Favourite' onChange={handleAddFavouriteChange} />
-                    {/* <TextField id="standard-basic" label="Favourite" variant="standard" value={songToAdd.songName} id="songName" name="songName" onChange={handleAddChange}/> */}
                 </div>
                 <Button variant="outlined" onClick={onSubmitAddAndClose}>Submit</Button>
             </Dialog>
             <Dialog open={isEditModalOpen} onClose={handleEditModalClose}>
                 <div>
-                    <TextField className="standard-basic" label="Song Name" variant="standard" value={songEditDisp.songName}id="songName" name="songName" onChange={handleEditChange}/>
-                    <TextField className="standard-basic" label="Artist Name" variant="standard" value={songEditDisp.artistName} id="artistName" name="artistName" onChange={handleEditChange}/>
-                    <TextField className="standard-basic" label="URL" variant="standard" value={songEditDisp.url} id="url" name="url" onChange={handleEditChange}/>
+                    <TextField className="standard-basic" label="Song Name" variant="standard" value={songEditDisp.songName} id="songName" name="songName" onChange={handleEditChange} />
+                    <TextField className="standard-basic" label="Artist Name" variant="standard" value={songEditDisp.artistName} id="artistName" name="artistName" onChange={handleEditChange} />
+                    <TextField className="standard-basic" label="URL" variant="standard" value={songEditDisp.url} id="url" name="url" onChange={handleEditChange} />
                 </div>
                 <Button variant="outlined" onClick={onSubmitEditSaveAndClose}>Submit</Button>
             </Dialog>
